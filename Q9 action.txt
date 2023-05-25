@@ -1,0 +1,64 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class Question9 {
+    public static void main(String args[]) {
+        // Create the Frame
+        JFrame jframe = new JFrame("Chat Screen");
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setSize(400, 400);
+
+        // Create the menu bar
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("FILE");
+        JMenu helpMenu = new JMenu("Help");
+        menuBar.add(fileMenu);
+        menuBar.add(helpMenu);
+
+        // Create the menu items
+        JMenuItem fileMenu1 = new JMenuItem("Open");
+        JMenuItem fileMenu2 = new JMenuItem("Save as");
+        fileMenu.add(fileMenu1);
+        fileMenu.add(fileMenu2);
+
+        // Create the text area
+        JTextArea textArea = new JTextArea();
+
+        // Create the panel at the bottom
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Please Enter Text");
+        JTextField textField = new JTextField(15);
+        JButton btn_send = new JButton("Send");
+        JButton btn_reset = new JButton("Reset");
+
+        // Add action listener to the "Send" button
+        btn_send.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String text = textField.getText();
+                textArea.append(text + "\n");
+                textField.setText("");
+            }
+        });
+
+        // Add action listener to the "Reset" button
+        btn_reset.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                textField.setText("");
+            }
+        });
+
+        panel.add(label);
+        panel.add(textField);
+        panel.add(btn_send);
+        panel.add(btn_reset);
+
+        // Add components to the frame
+        jframe.getContentPane().add(BorderLayout.SOUTH, panel);
+        jframe.getContentPane().add(BorderLayout.NORTH, menuBar);
+        jframe.getContentPane().add(BorderLayout.CENTER, textArea);
+
+        jframe.setVisible(true);
+    }
+}

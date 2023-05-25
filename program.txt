@@ -1,0 +1,1 @@
+This is text file created for reading the words form the file program in java .

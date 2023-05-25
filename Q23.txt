@@ -1,0 +1,52 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Question23 {
+    public static int longestConsecutive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        int longestSequence = 0;
+
+        for (int num : nums) {
+            if (!set.contains(num - 1)) {
+                int currentNum = num;
+                int currentSequence = 1;
+
+                while (set.contains(currentNum + 1)) {
+                    currentNum++;
+                    currentSequence++;
+                }
+
+                longestSequence = Math.max(longestSequence, currentSequence);
+            }
+        }
+
+        return longestSequence;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+
+        int[] nums = new int[n];
+        System.out.println("Enter the elements of the array:");
+
+        for (int i = 0; i < n; i++) {
+            nums[i] = scanner.nextInt();
+        }
+
+        int length = longestConsecutive(nums);
+        System.out.println("The length of the longest consecutive elements sequence is: " + length);
+
+        scanner.close();
+    }
+}

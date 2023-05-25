@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Question17 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] strings = new String[10];
+
+        // Read 10 strings from console
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Enter string " + (i + 1) + ": ");
+            strings[i] = scanner.nextLine();
+        }
+
+        // Sort the strings
+        Arrays.sort(strings);
+
+        System.out.println("Sorted strings:");
+        for (String string : strings) {
+            System.out.println(string);
+        }
+
+        // Combine two strings
+        System.out.println("\nCombining first two strings:");
+        String combinedString = strings[0] + strings[1];
+        System.out.println(combinedString);
+
+        // Reverse the first string
+        System.out.println("\nReversed first string:");
+        String reversedString = reverseString(strings[0]);
+        System.out.println(reversedString);
+
+        scanner.close();
+    }
+
+    // Method to reverse a string
+    public static String reverseString(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        return sb.reverse().toString();
+    }
+}
